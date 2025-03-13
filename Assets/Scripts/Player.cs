@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
 
     private Animator anim;
 
+    [SerializeField]
+    private GameObject Explosion;
+
     GameManager menuManager;
 
     private void Start()
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("You Lose");
                 anim.SetTrigger("Explode");
+                GameObject.Destroy(Instantiate(Explosion, transform.position, Quaternion.identity));
                 menuManager.audio.PlayOneShot(menuManager.playerExplode);
                 PlayerPrefs.SetInt("HiScore", GameManager.Instance.highScore);
                 StartCoroutine(loadMenu());

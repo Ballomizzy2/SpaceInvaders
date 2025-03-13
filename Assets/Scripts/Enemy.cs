@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
     private float fireTimer;
    private GameManager manager;
 
+    [SerializeField]
+    private GameObject Explosion;
+
     void Start()
     {
         currentSpeed = baseSpeed;
@@ -90,6 +93,7 @@ public class Enemy : MonoBehaviour
             UpdateSpeed();
             anim.SetTrigger("Explode");
             manager.audio.PlayOneShot(manager.enemyExplode);
+            GameObject.Destroy(Instantiate(Explosion, transform.position, Quaternion.identity));
             Destroy(gameObject, 1);
         }
     }
