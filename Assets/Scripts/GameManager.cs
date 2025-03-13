@@ -7,11 +7,14 @@ public class GameManager : MonoBehaviour
     public UnityEvent onScoreChanged;
     private int currentScore = 0;
     public int highScore = 0;
-
+    [SerializeField]
+    public AudioClip playerShoot, enemyShoot, playerExplode, enemyExplode;
+    public AudioSource audio;
     void Awake()
     {
         if (Instance == null) Instance = this;
         highScore = PlayerPrefs.GetInt("HiScore", 0);
+        audio = GetComponent<AudioSource>();
     }
 
     public void AddScore(int points)

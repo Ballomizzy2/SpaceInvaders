@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6055069717150008154}
   - component: {fileID: 5948996942061377388}
   - component: {fileID: 4988884264498715822}
+  - component: {fileID: -8491490553786569844}
   m_Layer: 3
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -146,8 +147,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796aad014e2107342a60ed88af81c745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFakeEnemy: 0
   baseSpeed: 1
   speedIncreaseFactor: 0.1
   pointValue: 30
   bulletPrefab: {fileID: 2457785739244962049, guid: d4511b14daaa37c468a74ed386b2583f, type: 3}
   fireRate: 2
+--- !u!95 &-8491490553786569844
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483517710255911465}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a279564c49061fe4096ff8d1e79a79cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

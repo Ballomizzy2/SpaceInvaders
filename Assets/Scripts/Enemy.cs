@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private bool isFakeEnemy;
+    private Animator anim;
     public float baseSpeed = 1f;
     public float speedIncreaseFactor = 1.1f;
     public int pointValue = 10;
@@ -21,10 +24,13 @@ public class Enemy : MonoBehaviour
         currentSpeed = baseSpeed;
         UpdateSpeed();
         manager = FindAnyObjectByType<GameManager>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
+        if (isFakeEnemy)
+            return;
         // Move enemies side to side
         StartCoroutine(MoveStep());
 
@@ -57,6 +63,8 @@ public class Enemy : MonoBehaviour
 
     void UpdateSpeed()
     {
+        if (isFakeEnemy)
+            return;
         // Count remaining enemies and increase speed
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         currentSpeed = baseSpeed + (0.1f * (50 - enemies.Length));
@@ -64,17 +72,25 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
+        if (isFakeEnemy)
+            return;
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        anim.SetTrigger("Shoot");
+        manager.audio.PlayOneShot(manager.enemyShoot);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (isFakeEnemy)
+            return;
         if (collision.gameObject.CompareTag("Player Bullet"))
         {
             manager.AddScore(pointValue);
             Destroy(collision.gameObject);
             UpdateSpeed();
-            Destroy(gameObject);
+            anim.SetTrigger("Explode");
+            manager.audio.PlayOneShot(manager.enemyExplode);
+            Destroy(gameObject, 1);
         }
     }
 }

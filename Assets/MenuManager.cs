@@ -3,10 +3,22 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField]
+    private bool isCreditScene;
+
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if(isCreditScene)
+            StartCoroutine(ReturnToMenu());
         
+        IEnumerator ReturnToMenu() 
+        {
+            yield return new WaitForSeconds(5);
+            SceneManager.LoadScene(0);
+        }
     }
 
     // Update is called once per frame
