@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
             UpdateSpeed();
             anim.SetTrigger("Explode");
             manager.audio.PlayOneShot(manager.enemyExplode);
-            GameObject.Destroy(Instantiate(Explosion, transform.position, Quaternion.identity));
+            GameObject.Destroy(Instantiate(Explosion, transform.position, Quaternion.identity), 2);
             Destroy(gameObject, 1);
         }
     }

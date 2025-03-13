@@ -151,6 +151,7 @@ MonoBehaviour:
   speed: 5
   bulletPrefab: {fileID: 2457785739244962049, guid: 8090cb9f6e6091540913e4a5eed0089a, type: 3}
   fireRate: 0.5
+  Explosion: {fileID: 2942286453760359977, guid: ddf94127f65b3f5488021c667962e9e4, type: 3}
 --- !u!95 &1776304162387822103
 Animator:
   serializedVersion: 7
